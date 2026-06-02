@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.almacenamiento.databinding.ActivityMainBinding
+import java.io.Reader
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,5 +37,9 @@ class MainActivity : AppCompatActivity() {
             output.write(fileContents.toByteArray())
         }
 
+        openFileInput("datos_usuario.txt").bufferedReader().use { reader ->
+            val text = reader.readText()
+            binding.tvwContentFile.text = text
+        }
     }
 }
